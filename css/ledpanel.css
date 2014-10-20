@@ -1,0 +1,28 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16.10.2014, 18:07:46
+    Author     : Karsten Meier <your.name at your.org>
+*/
+#panel{
+    height: 20px;
+    padding: 2px;
+    width: 340px;
+    background-color: #333333;
+}
+.led{
+    width: 20px;
+    height: 10px;
+    display: inline-block;
+    margin: 5px;
+}
+.on{
+   background-color: #33ee33; 
+   box-shadow: 0px 0px 5px 2px #33ee33;
+}
+.off{
+   background-color: #336633; 
+}

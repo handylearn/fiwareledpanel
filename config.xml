@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Template xmlns="http://wirecloud.conwet.fi.upm.es/ns/template#">
+    <Catalog.ResourceDescription>
+        <Vendor>Handylearn Projects H2H e.K.</Vendor>
+        <Name>ledpanel</Name>
+        <DisplayName>LED Panel</DisplayName>
+        <Author>Meier</Author>
+        <Version>0.6</Version>
+        <Mail>info@handylearn-projects.de</Mail>
+        <Description>display a row of green LEDs, accepts input from 0 to 10.</Description>
+        <ImageURI>images/ledpanelpreview.png</ImageURI>
+        <iPhoneImageURI>images/led57.png</iPhoneImageURI>
+        <WikiURI>http://en.blog.handylearn.eu/develop/fiware/</WikiURI>
+    </Catalog.ResourceDescription>
+
+    <Platform.Wiring>
+        <InputEndpoint name="inputvalue" label="Value" type="text" action_label="display LEDs" 
+                       description="number of leds to turn on, from 0 to 10" friendcode="number" />
+    </Platform.Wiring>
+
+    <Platform.Link>
+        <XHTML
+            href="index.html"
+            contenttype="text/html"
+            cacheable="true"
+            use-platform-style="true"/>
+    </Platform.Link>
+
+    <Platform.Rendering width="6" height="5" />
+</Template>
