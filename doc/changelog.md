@@ -1,3 +1,6 @@
+* check for valid number for max_input
+* added documentation
+
 0.6
 ====
 
