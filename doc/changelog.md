@@ -1,3 +1,8 @@
+0.6
+====
+
+* added preference to control the input range
+
 0.5
 ====
 

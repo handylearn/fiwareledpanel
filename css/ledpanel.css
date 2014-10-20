@@ -7,11 +7,16 @@ and open the template in the editor.
     Created on : 16.10.2014, 18:07:46
     Author     : Karsten Meier <your.name at your.org>
 */
+body {
+    padding: 0;
+    background-color: #444;
+
+}
 #panel{
     height: 20px;
     padding: 2px;
     width: 340px;
-    background-color: #333333;
+    background-color: #444;
 }
 .led{
     width: 20px;
