@@ -1,4 +1,4 @@
-Widget to show a panel of LEDs inside a FIWARE Wirecloud dashboard
+Widget to show a panel of LEDs inside a [FIWARE Wirecloud](http://conwet.fi.upm.es/wirecloud/) dashboard
 
 ![LED Panel Image](images/ledpanelpreview.png)
 

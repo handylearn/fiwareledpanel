@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>LED Panel Unit Test </title>
+  <link rel="stylesheet" href="//code.jquery.com/qunit/qunit-1.15.0.css">
+</head>
+<body> 
+  <div id="qunit"></div>
+  <div id="qunit-fixture">
+      <div id="panel">
+          <div class="led on" id="led0"></div> 
+          <div class="led off" id="led1"></div> 
+          <div class="led off" id="led2"></div> 
+          <div class="led off" id="led3"></div> 
+          <div class="led off" id="led4"></div> 
+          <div class="led off" id="led5"></div> 
+          <div class="led off" id="led6"></div> 
+          <div class="led off" id="led7"></div> 
+          <div class="led off" id="led8"></div> 
+          <div class="led off" id="led9"></div> 
+          <div class="clear"></div>
+      </div>      
+  </div>
+  <script src="//code.jquery.com/qunit/qunit-1.15.0.js"></script>
+  <script src="../js/ledswitch.js"></script>
+  <script>
+    QUnit.assert.led_on = function(nr){
+        
+        var c = document.getElementById("led" + nr).className;
+        var r = (c === "led on");
+        QUnit.push(r, c, "led on", "Led should be on for " + nr);
+    };
+    QUnit.assert.led_off = function(nr){        
+        var c = document.getElementById("led" + nr).className;
+        var r = (c === "led off");
+        QUnit.push(r, c, "led off", "Led should be off for " + nr);
+    };    
+    
+    QUnit.test( "default normalize does not change values", function( assert ) {
+      handylearn_ledpanel.set_max_input(10);
+      assert.equal( 0, handylearn_ledpanel.normalize_value(0));
+      assert.equal( 1, handylearn_ledpanel.normalize_value(1));
+      assert.equal( 5, handylearn_ledpanel.normalize_value(5));
+      assert.equal( 10, handylearn_ledpanel.normalize_value(10));
+    });
+
+    QUnit.test( "normalize for 1 works", function( assert ) {
+      handylearn_ledpanel.set_max_input(1.0);
+      assert.equal( 0, handylearn_ledpanel.normalize_value(0));
+      assert.equal( 5, handylearn_ledpanel.normalize_value(0.5));
+      assert.equal( 10, handylearn_ledpanel.normalize_value(1));
+    });     
+    
+    QUnit.test( "can switch led on and off", function( assert ) {
+        handylearn_ledpanel.set_max_input(10);
+        assert.led_off(3);
+        handylearn_ledpanel.switch_led(3, true);
+        assert.led_on(3);        
+        handylearn_ledpanel.switch_led(3, false);
+        assert.led_off(3);
+    });
+    
+    QUnit.test( "Zero makes all LEDs dark", function( assert ) {
+        handylearn_ledpanel.set_max_input(10);
+        handylearn_ledpanel.set_panel_value(0);
+        assert.led_off(0);
+        assert.led_off(1);
+    });
+    
+    QUnit.test( "10 makes all LEDs light", function( assert ) {
+        handylearn_ledpanel.set_max_input(10);
+        handylearn_ledpanel.set_panel_value(10);
+        assert.led_on(0);
+        assert.led_on(8);
+        assert.led_on(9);
+    });
+    
+    QUnit.test( "5 makes half LEDs light", function( assert ) {
+        handylearn_ledpanel.set_max_input(10);
+        handylearn_ledpanel.set_panel_value(5);
+        assert.led_on(0);
+        assert.led_on(4);
+        assert.led_off(5);
+        assert.led_off(9);
+    });    
+    QUnit.test( "overflow makes all LEDs light", function( assert ) {
+        handylearn_ledpanel.set_max_input(10);
+        handylearn_ledpanel.set_panel_value(100);
+        assert.led_on(0);
+        assert.led_on(8);
+        assert.led_on(9);
+    });    
+   
+    
+  </script>
+</body>
+</html>
